@@ -54,3 +54,15 @@ elif(TimeDifference <= default_buffer_Time_min):
     for x in records:
         BufferTime = x[3]
         print("Buffer time remaining is : ", BufferTime)
+elif(TimeDifference >= 120):
+    RemainingBufferTime = 0
+    updateBufferQuery = "Update employeeDetails set BufferTime =%s where empID=%s"
+    mycursor.execute(updateBufferQuery, (RemainingBufferTime, empID,))
+    mydb.commit()
+    mycursor.execute(my_select_query, (empID,))
+    records = mycursor.fetchall();
+
+    for x in records:
+        BufferTime = x[3]
+        print("Buffer time remaining is : ", BufferTime)
+
